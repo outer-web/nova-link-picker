@@ -1,0 +1,41 @@
+{
+    "name": "outerweb/nova-link-picker",
+    "description": "A Laravel Nova field to generates links",
+    "homepage": "https://github.com/outer-web/nova-link-picker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Outerweb",
+            "email": "info@outerweb.be"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "laravel/framework": "^10.0",
+        "laravel/nova": "^4.0",
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Outerweb\\NovaLinkPicker\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Outerweb\\NovaLinkPicker\\NovaLinkPickerServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
