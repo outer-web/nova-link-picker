@@ -37,6 +37,7 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'link_entity' => \Outerweb\NovaLinkPicker\Entities\Link::class,
     'api_base_url' => '/nova-vendor/outerweb/nova-link-picker',
     'available_options' => [
         'open_in_new_tab' => true,
@@ -177,6 +178,21 @@ namespace App\Nova\Fields;
 use Outerweb\NovaLinkPicker\Nova\Fields\LinkPicker as BaseLinkPicker;
 
 class LinkPicker extends BaseLinkPicker
+{
+    // Your custom code here
+}
+
+```
+
+You can overwrite the `Link` entity by creating a new entity that extends the `Link` entity. This way, you can just overwrite the methods you want to change.
+
+```php
+
+namespace App\Entities;
+
+use Outerweb\NovaLinkPicker\Entities\Link as BaseLink;
+
+class Link extends BaseLink
 {
     // Your custom code here
 }

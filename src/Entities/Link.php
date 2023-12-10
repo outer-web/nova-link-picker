@@ -61,7 +61,7 @@ class Link
         }
 
         try {
-            return route($this->routeName, $parameters);
+            return $this->resolveRoute($this->routeName, $parameters);
         } catch (Exception $e) {
             return null;
         }
@@ -101,19 +101,6 @@ class Link
         return $string;
     }
 
-    public function isOptionEnabled(string $option): bool
-    {
-        return collect(config('nova-link-picker.available_options', []))
-            ->filter(fn ($value, $key) => $value === true)
-            ->keys()
-            ->contains($option);
-    }
-
-    public function isOptionDisabled(string $option): bool
-    {
-        return ! $this->isOptionEnabled($option);
-    }
-
     public function toArray(): array
     {
         return [
@@ -127,5 +114,23 @@ class Link
     public function __toString(): string
     {
         return json_encode($this->toArray());
+    }
+
+    private function isOptionEnabled(string $option): bool
+    {
+        return collect(config('nova-link-picker.available_options', []))
+            ->filter(fn ($value, $key) => $value === true)
+            ->keys()
+            ->contains($option);
+    }
+
+    private function isOptionDisabled(string $option): bool
+    {
+        return ! $this->isOptionEnabled($option);
+    }
+
+    private function resolveRoute(string $routeName, array $parameters): string
+    {
+        return route($routeName, $parameters);
     }
 }

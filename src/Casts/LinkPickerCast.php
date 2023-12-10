@@ -10,7 +10,7 @@ class LinkPickerCast implements CastsAttributes
 {
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        return Link::make($value);
+        return config('nova-link-picker.link_entity', Link::class)::make($value);
     }
 
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed

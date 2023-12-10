@@ -34,8 +34,10 @@ class LinkPicker extends Field
     {
         parent::resolveForDisplay($resource, $attribute);
 
-        if (! $this->value instanceof Link) {
-            $this->value = Link::make($this->value);
+        $linkClass = config('nova-link-picker.link_entity', Link::class);
+
+        if (! $this->value instanceof $linkClass) {
+            $this->value = $linkClass::make($this->value);
         }
 
         $this->withMeta([
