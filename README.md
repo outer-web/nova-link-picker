@@ -3,7 +3,21 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/outerweb/nova-link-picker.svg?style=flat-square)](https://packagist.org/packages/outerweb/nova-link-picker)
 [![Total Downloads](https://img.shields.io/packagist/dt/outerweb/nova-link-picker.svg?style=flat-square)](https://packagist.org/packages/outerweb/nova-link-picker)
 
-This package provides a Nova field to generate a link. It shows a select field with the routes of your application you want to be used as a link. It also provides fixed options like `external`, `mailto` and `tel`.
+This package provides a Nova field to generate a link. It shows a select field with the routes of your application you want to be used as a link. It also provides fixed options like `external`, `mailto` and `tel`. Route model binding is automatically applied to the parameters to give the user dropdowns with the available options.
+
+## Screenshots
+
+### Edit
+
+![Index](docs/screenshots/nova-edit-page.png)
+
+### Index
+
+![Index](docs/screenshots/nova-index-page.png)
+
+### Detail
+
+![Detail](docs/screenshots/nova-detail-page.png)
 
 ## Installation
 
@@ -102,6 +116,30 @@ $link->isDownload();
 // Render the link attributes (`href`, `target` and optionally `download`)
 // Example: <a {{ $link->renderAttributes() }}>Click me!</a>
 $link->renderAttributes();
+
+```
+
+Add the following syntax to the routes you want to be available in the select field:
+
+```php
+
+Route::get('my-route', function () {
+    // ...
+})->name('my-route')
+    ->where('nova-link-picker', 'true');
+
+```
+
+By default, the label of the route will be the route name. If the route contains a dot, the label will split the parts with a ">" character. For example: `my-route` will be `My route` and `my-route.sub-route` will be `My route > Sub route`.
+You can always customize the label of your named routes by adding the following to your routes:
+
+```php
+
+Route::get('my-route', function () {
+    // ...
+})->name('my-route')
+    ->where('nova-link-picker', 'true')
+    ->where('nova-link-picker-label', __('My custom label'));
 
 ```
 
