@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This package has been abandoned.
+
 # Nova Link Picker
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/outerweb/nova-link-picker.svg?style=flat-square)](https://packagist.org/packages/outerweb/nova-link-picker)
